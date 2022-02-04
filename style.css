@@ -1,0 +1,38 @@
+img {
+  width: 100%;
+}
+
+body {
+  background-color: black;
+}
+
+.cape::after {
+  content: "";
+  background-image: url("https://www.pngkit.com/bigpic/u2q8r5o0y3a9q8o0/");
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+article {
+  padding: 1rem;
+  background-color: black;
+  border: 5px solid black;
+  border-radius: 1rem;
+  color: white;
+  box-shadow: 4px 4px 10px 7px rgb(96, 96, 96);
+}
+
+h2 {
+  color: green;
+}
+
+.namesis {
+  color: red;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}

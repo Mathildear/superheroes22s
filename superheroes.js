@@ -307,6 +307,11 @@ const superheroes = [
     name: "Fatneek daddy the animal",
     powers: ["existing"],
     img: "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fofficialfatneek&psig=AOvVaw1T9DLdWsopYLOZrJAMFTZy&ust=1644054273428000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCND7pNDh5fUCFQAAAAAdAAAAABAD",
+    dob: {
+      day: "13",
+      month: "9",
+      year: "1968",
+    },
     hasCape: true,
   },
   {
@@ -481,6 +486,11 @@ const superheroes = [
       "embarassing people",
     ],
     img: "http://www.pxleyes.com/images/contests/what-you-eat/fullsize/Banana-man-4d8a6d7b1842c.jpg",
+    dob: {
+      day: "13",
+      month: "9",
+      year: "1968",
+    },
     hasCape: false,
   },
   {
@@ -498,9 +508,45 @@ const superheroes = [
   },
 ];
 
-alert(
-  "1. Checking if JS file is linked up correctly. \n2. Always open the inspector/console when woorking with the JS \n3. Write your code in the end of the js-file \n4. Don't use alert boxes for UI... \n5. Delete this message or comment it out"
-);
 console.table(superheroes);
 
 /* write your code here */
+
+superheroes.forEach(showSuperheroes);
+
+function showSuperheroes(hero) {
+  const templateElement = document.querySelector("#superheroTemplate").content;
+  //Step 2: Make a "clone"
+  const cloneIt = templateElement.cloneNode(true);
+
+  //Step 3: Change the content of the clone
+  cloneIt.querySelector("h2").textContent = hero.name;
+  cloneIt.querySelector("img").src = hero.img;
+  cloneIt.querySelector(
+    "img"
+  ).alt = `Sorry but ${hero.name} does not have a picture to show you!`;
+  cloneIt.querySelector(".power").textContent = hero.powers;
+  cloneIt.querySelector(".namesis").textContent =
+    "Has a nemesis called: " + hero.primaryNemesis;
+  cloneIt.querySelector(".lifepercentage").textContent =
+    "Has a life percentage of: " + hero.lifePercentage + "%";
+
+  cloneIt.querySelector(".dob").textContent =
+    "Is born on: " +
+    hero.dob.day +
+    " / " +
+    hero.dob.month +
+    " - " +
+    hero.dob.year;
+  if (hero.hasCape === true) {
+    cloneIt.querySelector(".capePlace").textContent =
+      "Has a cape: " + hero.hasCape;
+    cloneIt.querySelector(".capePlace").classList.add("cape");
+  }
+  //Step 4: Chose the new "parent" element
+  const parentElement = document.querySelector("main");
+  //Append it to main
+
+  //Step 5: Add (Append) the clone to the DOM
+  parentElement.appendChild(cloneIt);
+}
